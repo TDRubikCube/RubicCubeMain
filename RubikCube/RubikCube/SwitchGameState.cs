@@ -42,8 +42,8 @@ namespace RubikCube
         #region normal vars
         private float currentScale;
         public bool JustSwitched = false;
-        public string algOrder = "";
-        bool stopAnim = false;
+        public string AlgOrder = "";
+        //bool stopAnim = false;
         int rotationsLeft = 0;
         bool shouldRotate;
         //double typedTextLength;
@@ -91,38 +91,38 @@ namespace RubikCube
         {
             if (cube.Angle <= -100)
             {
-                Debug.WriteLine("Original=   " + algOrder);
-                if (algOrder.Length > 1)
+                Debug.WriteLine("Original=   " + AlgOrder);
+                if (AlgOrder.Length > 1)
                 {
-                    if ((algOrder[1] == 'i') || (algOrder[1] == 'I') || (algOrder[1] == '\''))
+                    if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                     {
-                        algOrder = algOrder.Substring(2);
+                        AlgOrder = AlgOrder.Substring(2);
                     }
                     else
                     {
-                        algOrder = algOrder.Substring(1);
+                        AlgOrder = AlgOrder.Substring(1);
                     }
-                    Debug.WriteLine("After Change" + algOrder);
+                    Debug.WriteLine("After Change" + AlgOrder);
                 }
                 else
                 {
-                    algOrder = "";
+                    AlgOrder = "";
                 }
                 camera.RealRotate(cameraPos);
-                rotationsLeft = algOrder.Length;
-                if (algOrder.Split('i').Length != -1)
+                rotationsLeft = AlgOrder.Length;
+                if (AlgOrder.Split('i').Length != -1)
                 {
-                    rotationsLeft -= algOrder.Split('i').Length - 1;
+                    rotationsLeft -= AlgOrder.Split('i').Length - 1;
 
                 }
-                if (algOrder.Split('I').Length != -1)
+                if (AlgOrder.Split('I').Length != -1)
                 {
-                    rotationsLeft -= algOrder.Split('I').Length - 1;
+                    rotationsLeft -= AlgOrder.Split('I').Length - 1;
 
                 }
-                if (algOrder.Split('\'').Length != -1)
+                if (AlgOrder.Split('\'').Length != -1)
                 {
-                    rotationsLeft -= algOrder.Split('\'').Length - 1;
+                    rotationsLeft -= AlgOrder.Split('\'').Length - 1;
 
                 }
                 Debug.WriteLine("Number of rotations left:" + rotationsLeft);
@@ -130,161 +130,166 @@ namespace RubikCube
             }
             if (keyboardState.IsKeyDown(Keys.L) && oldKeyboardState.IsKeyUp(Keys.L))
             {
-                algOrder += "L";
+                AlgOrder += "L";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    algOrder += "I";
+                    AlgOrder += "I";
             }
             if (keyboardState.IsKeyDown(Keys.R) && oldKeyboardState.IsKeyUp(Keys.R))
             {
-                algOrder += "R";
+                AlgOrder += "R";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    algOrder += "I";
+                    AlgOrder += "I";
             }
             if (keyboardState.IsKeyDown(Keys.U) && oldKeyboardState.IsKeyUp(Keys.U))
             {
-                algOrder += "U";
+                AlgOrder += "U";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    algOrder += "I";
+                    AlgOrder += "I";
             }
             if (keyboardState.IsKeyDown(Keys.D) && oldKeyboardState.IsKeyUp(Keys.D))
             {
-                algOrder += "D";
+                AlgOrder += "D";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    algOrder += "I";
+                    AlgOrder += "I";
             }
             if (keyboardState.IsKeyDown(Keys.B) && oldKeyboardState.IsKeyUp(Keys.B))
             {
-                algOrder += "B";
+                AlgOrder += "B";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    algOrder += "I";
+                    AlgOrder += "I";
             }
             if (keyboardState.IsKeyDown(Keys.F) && oldKeyboardState.IsKeyUp(Keys.F))
             {
-                algOrder += "F";
+                AlgOrder += "F";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    algOrder += "I";
+                    AlgOrder += "I";
             }
-            UpdateAlgo(algOrder);
+            if ((keyboardState.IsKeyDown(Keys.LeftControl) || oldKeyboardState.IsKeyUp(Keys.RightControl)) && keyboardState.IsKeyUp(Keys.Z) && oldKeyboardState.IsKeyDown(Keys.Z))
+            {
+                AlgOrder += "Z";
+            }
+            UpdateAlgo(AlgOrder);
 
             //here the fun starts
             //Debug.WriteLine("algOrder=    "+algOrder);
             if (cube.ShouldAddScrambleToOrder)
             {
-                algOrder += cube.ScramblingVectors;
+                AlgOrder += cube.ScramblingVectors;
                 cube.ShouldAddScrambleToOrder = false;
             }
-            if (algOrder.Length > 0)
+            if (AlgOrder.Length > 0)
             {
-                if ((algOrder[0] == 'L') || (algOrder[0] == 'l'))
+                if ((AlgOrder[0] == 'L') || (AlgOrder[0] == 'l'))
                 {
-                    if (algOrder.Length > 1)
+                    if (AlgOrder.Length > 1)
                     {
-                        if ((algOrder[1] == 'i') || (algOrder[1] == 'I') || (algOrder[1] == '\''))
+                        if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
-                            cube.Rotate(camera.RealLeft, false, algOrder);
+                            cube.Rotate(camera.RealLeft, false, AlgOrder);
                         }
                         else
                         {
-                            cube.Rotate(camera.RealLeft, true, algOrder);
+                            cube.Rotate(camera.RealLeft, true, AlgOrder);
                         }
                     }
                     else
-                        cube.Rotate(camera.RealLeft, true, algOrder);
+                        cube.Rotate(camera.RealLeft, true, AlgOrder);
                 }
-                else if ((algOrder[0] == 'R') || (algOrder[0] == 'r'))
+                else if ((AlgOrder[0] == 'R') || (AlgOrder[0] == 'r'))
                 {
-                    if (algOrder.Length > 1)
+                    if (AlgOrder.Length > 1)
                     {
-                        if ((algOrder[1] == 'i') || (algOrder[1] == 'I') || (algOrder[1] == '\''))
+                        if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
-                            cube.Rotate(camera.RealRight, false, algOrder);
+                            cube.Rotate(camera.RealRight, false, AlgOrder);
                         }
                         else
                         {
-                            cube.Rotate(camera.RealRight, true, algOrder);
-                        }
-                    }
-                    else
-                    {
-                        cube.Rotate(camera.RealRight, true, algOrder);
-                    }
-                }
-                else if ((algOrder[0] == 'U') || (algOrder[0] == 'u'))
-                {
-                    if (algOrder.Length > 1)
-                    {
-                        if ((algOrder[1] == 'i') || (algOrder[1] == 'I') || (algOrder[1] == '\''))
-                        {
-                            cube.Rotate(Vector3.Up, false, algOrder);
-                        }
-                        else
-                        {
-                            cube.Rotate(Vector3.Up, true, algOrder);
+                            cube.Rotate(camera.RealRight, true, AlgOrder);
                         }
                     }
                     else
                     {
-                        cube.Rotate(Vector3.Up, true, algOrder);
+                        cube.Rotate(camera.RealRight, true, AlgOrder);
                     }
                 }
-                else if ((algOrder[0] == 'D') || (algOrder[0] == 'd'))
+                else if ((AlgOrder[0] == 'U') || (AlgOrder[0] == 'u'))
                 {
-                    if (algOrder.Length > 1)
+                    if (AlgOrder.Length > 1)
                     {
-                        if ((algOrder[1] == 'i') || (algOrder[1] == 'I') || (algOrder[1] == '\''))
+                        if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
-                            cube.Rotate(Vector3.Down, false, algOrder);
+                            cube.Rotate(Vector3.Up, false, AlgOrder);
                         }
                         else
                         {
-                            cube.Rotate(Vector3.Down, true, algOrder);
+                            cube.Rotate(Vector3.Up, true, AlgOrder);
                         }
                     }
                     else
                     {
-                        cube.Rotate(Vector3.Down, true, algOrder);
+                        cube.Rotate(Vector3.Up, true, AlgOrder);
                     }
                 }
-                else if ((algOrder[0] == 'B') || (algOrder[0] == 'b'))
+                else if ((AlgOrder[0] == 'D') || (AlgOrder[0] == 'd'))
                 {
-                    if (algOrder.Length > 1)
+                    if (AlgOrder.Length > 1)
                     {
-                        if ((algOrder[1] == 'i') || (algOrder[1] == 'I') || (algOrder[1] == '\''))
+                        if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
-                            cube.Rotate(camera.RealBackward, false, algOrder);
+                            cube.Rotate(Vector3.Down, false, AlgOrder);
                         }
                         else
                         {
-                            cube.Rotate(camera.RealBackward, true, algOrder);
+                            cube.Rotate(Vector3.Down, true, AlgOrder);
                         }
                     }
                     else
                     {
-                        cube.Rotate(camera.RealBackward, true, algOrder);
+                        cube.Rotate(Vector3.Down, true, AlgOrder);
                     }
                 }
-                else if ((algOrder[0] == 'F') || (algOrder[0] == 'f'))
+                else if ((AlgOrder[0] == 'B') || (AlgOrder[0] == 'b'))
                 {
-                    if (algOrder.Length > 1)
+                    if (AlgOrder.Length > 1)
                     {
-                        if ((algOrder[1] == 'i') || (algOrder[1] == 'I') || (algOrder[1] == '\''))
+                        if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
-                            cube.Rotate(camera.RealForward, false, algOrder);
+                            cube.Rotate(camera.RealBackward, false, AlgOrder);
                         }
                         else
                         {
-                            cube.Rotate(camera.RealForward, true, algOrder);
+                            cube.Rotate(camera.RealBackward, true, AlgOrder);
                         }
                     }
                     else
                     {
-                        cube.Rotate(camera.RealForward, true, algOrder);
+                        cube.Rotate(camera.RealBackward, true, AlgOrder);
                     }
                 }
+                else if ((AlgOrder[0] == 'F') || (AlgOrder[0] == 'f'))
+                {
+                    if (AlgOrder.Length > 1)
+                    {
+                        if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
+                        {
+                            cube.Rotate(camera.RealForward, false, AlgOrder);
+                        }
+                        else
+                        {
+                            cube.Rotate(camera.RealForward, true, AlgOrder);
+                        }
+                    }
+                    else
+                    {
+                        cube.Rotate(camera.RealForward, true, AlgOrder);
+                    }
+                }
+
                 else
                 {
-                    algOrder = algOrder.Substring(1);
-                    Debug.WriteLine("AlgOrder unknown = " + algOrder);
+                    AlgOrder = AlgOrder.Substring(1);
+                    Debug.WriteLine("AlgOrder unknown = " + AlgOrder);
                 }
             }
         }
@@ -420,7 +425,7 @@ namespace RubikCube
 
         public void UpdateAlgo(string algo)
         {
-            algOrder = algo;
+            AlgOrder = algo;
         }
         #endregion
 
