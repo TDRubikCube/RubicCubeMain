@@ -43,9 +43,12 @@ namespace RubikCube
         private float currentScale;
         public bool JustSwitched = false;
         public string AlgOrder = "";
+        public string AllTimeAlgOrder = "";
+        public string YAlgOrder = "";
         //bool stopAnim = false;
-        int rotationsLeft = 0;
-        bool shouldRotate;
+        public int rotationsLeft = 0;
+        public bool shouldRotate;
+        public bool waitForRotate = false;
         //double typedTextLength;
         //int delayInMilliseconds;
         //bool isDoneDrawing;
@@ -89,23 +92,57 @@ namespace RubikCube
         /// <param name="cameraPos"></param>
         private void RotateWhichSide(KeyboardState keyboardState, KeyboardState oldKeyboardState, Vector3 cameraPos)
         {
+            
             if (cube.Angle <= -100)
             {
+                if ((AlgOrder[0] == 'Z') || (AlgOrder[0] == 'z'))
+                {
+                    if ((AllTimeAlgOrder[AllTimeAlgOrder.Length - 1] == 'I') || (AllTimeAlgOrder[AllTimeAlgOrder.Length - 1] == 'i'))
+                    {
+                        YAlgOrder = AllTimeAlgOrder[AllTimeAlgOrder.Length - 1] + YAlgOrder;
+                        AllTimeAlgOrder = AllTimeAlgOrder.Substring(0, AllTimeAlgOrder.Length - 1);
+                    }
+                    YAlgOrder = AllTimeAlgOrder[AllTimeAlgOrder.Length - 1] + YAlgOrder;
+                    AllTimeAlgOrder = AllTimeAlgOrder.Substring(0, AllTimeAlgOrder.Length - 1);
+                }
+                if ((AlgOrder[0] == 'Y') || (AlgOrder[0] == 'y'))
+                {
+                    Debug.WriteLine("HELLO 1");
+                    AllTimeAlgOrder += YAlgOrder[0];
+                    YAlgOrder = YAlgOrder.Substring(1);
+                    if (YAlgOrder.Length > 0)
+                    {
+                        if ((YAlgOrder[0] == 'I') || (YAlgOrder[0] == 'i'))
+                        {
+                            Debug.WriteLine("HELLO 2");
+                            AllTimeAlgOrder += YAlgOrder[0];
+                            YAlgOrder = YAlgOrder.Substring(1);
+                        }
+                    }
+                    Debug.WriteLine("HELLO 3");
+                }
+                //////////////////////////////////////////////////////
+                waitForRotate = false;
+                Debug.WriteLine("waitForRotate1 is " + waitForRotate);
                 Debug.WriteLine("Original=   " + AlgOrder);
                 if (AlgOrder.Length > 1)
                 {
                     if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                     {
+                        AllTimeAlgOrder += "I";
                         AlgOrder = AlgOrder.Substring(2);
                     }
                     else
                     {
                         AlgOrder = AlgOrder.Substring(1);
+                        
                     }
                     Debug.WriteLine("After Change" + AlgOrder);
+                    
                 }
                 else
                 {
+                    
                     AlgOrder = "";
                 }
                 camera.RealRotate(cameraPos);
@@ -126,48 +163,72 @@ namespace RubikCube
 
                 }
                 Debug.WriteLine("Number of rotations left:" + rotationsLeft);
+                Debug.WriteLine("AllTimeAlgOrder " + AllTimeAlgOrder);
+                Debug.WriteLine("YAlgOrder " + YAlgOrder);
                 cube.Angle = 0;
+            }
+            /////////////
+            if (keyboardState.IsKeyDown(Keys.Q) && oldKeyboardState.IsKeyUp(Keys.Q))
+            {
+                Debug.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             }
             if (keyboardState.IsKeyDown(Keys.L) && oldKeyboardState.IsKeyUp(Keys.L))
             {
+                YAlgOrder = "";
                 AlgOrder += "L";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
                     AlgOrder += "I";
             }
             if (keyboardState.IsKeyDown(Keys.R) && oldKeyboardState.IsKeyUp(Keys.R))
             {
+                YAlgOrder = "";
                 AlgOrder += "R";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
                     AlgOrder += "I";
             }
             if (keyboardState.IsKeyDown(Keys.U) && oldKeyboardState.IsKeyUp(Keys.U))
             {
+                YAlgOrder = "";
                 AlgOrder += "U";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
                     AlgOrder += "I";
             }
             if (keyboardState.IsKeyDown(Keys.D) && oldKeyboardState.IsKeyUp(Keys.D))
             {
+                YAlgOrder = "";
                 AlgOrder += "D";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
                     AlgOrder += "I";
             }
             if (keyboardState.IsKeyDown(Keys.B) && oldKeyboardState.IsKeyUp(Keys.B))
             {
+                YAlgOrder = "";
                 AlgOrder += "B";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
                     AlgOrder += "I";
             }
             if (keyboardState.IsKeyDown(Keys.F) && oldKeyboardState.IsKeyUp(Keys.F))
             {
+                YAlgOrder = "";
                 AlgOrder += "F";
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
                     AlgOrder += "I";
             }
             if ((keyboardState.IsKeyDown(Keys.LeftControl) || oldKeyboardState.IsKeyUp(Keys.RightControl)) && keyboardState.IsKeyUp(Keys.Z) && oldKeyboardState.IsKeyDown(Keys.Z))
             {
-                AlgOrder += "Z";
+                if (AllTimeAlgOrder.Length > 0)
+                {
+                    AlgOrder += "Z";
+                }
             }
+            if ((keyboardState.IsKeyDown(Keys.LeftControl) || oldKeyboardState.IsKeyUp(Keys.RightControl)) && keyboardState.IsKeyUp(Keys.Y) && oldKeyboardState.IsKeyDown(Keys.Y))
+            {
+                if (YAlgOrder.Length > 0)
+                {
+                    AlgOrder += "Y";
+                }
+            }
+            
             UpdateAlgo(AlgOrder);
 
             //here the fun starts
@@ -179,20 +240,54 @@ namespace RubikCube
             }
             if (AlgOrder.Length > 0)
             {
-                if ((AlgOrder[0] == 'L') || (AlgOrder[0] == 'l'))
+                if ((AlgOrder[0] == 'Z') || (AlgOrder[0] == 'z')) //Check for control+Z
+                {
+                    if (AllTimeAlgOrder.Length > 0)
+                    {
+                        ControlZ();
+                    }
+                    else
+                    {
+                        AlgOrder.Substring(1);
+                    }
+                }
+                else if ((AlgOrder[0] == 'Y') || (AlgOrder[0] == 'y')) //Check for control+Y
+                {
+                    if (YAlgOrder.Length > 0)
+                    {
+                        ControlY();
+                    }
+                    else
+                    {
+                        AlgOrder.Substring(1);
+                    }
+                }
+                else if ((AlgOrder[0] == 'L') || (AlgOrder[0] == 'l'))
                 {
                     if (AlgOrder.Length > 1)
                     {
                         if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealLeft));
+                            }
                             cube.Rotate(camera.RealLeft, false, AlgOrder);
                         }
                         else
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealLeft));
+                            }
                             cube.Rotate(camera.RealLeft, true, AlgOrder);
                         }
                     }
                     else
+                        if (!waitForRotate)
+                        {
+                            AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealLeft));
+                        }
                         cube.Rotate(camera.RealLeft, true, AlgOrder);
                 }
                 else if ((AlgOrder[0] == 'R') || (AlgOrder[0] == 'r'))
@@ -201,15 +296,27 @@ namespace RubikCube
                     {
                         if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealRight));
+                            }
                             cube.Rotate(camera.RealRight, false, AlgOrder);
                         }
                         else
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealRight));
+                            }
                             cube.Rotate(camera.RealRight, true, AlgOrder);
                         }
                     }
                     else
                     {
+                        if (!waitForRotate)
+                        {
+                            AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealRight));
+                        }
                         cube.Rotate(camera.RealRight, true, AlgOrder);
                     }
                 }
@@ -219,15 +326,27 @@ namespace RubikCube
                     {
                         if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(Vector3.Up));
+                            }
                             cube.Rotate(Vector3.Up, false, AlgOrder);
                         }
                         else
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(Vector3.Up));
+                            }
                             cube.Rotate(Vector3.Up, true, AlgOrder);
                         }
                     }
                     else
                     {
+                        if (!waitForRotate)
+                        {
+                            AllTimeAlgOrder += (VectorAllAlgOrder(Vector3.Up));
+                        }
                         cube.Rotate(Vector3.Up, true, AlgOrder);
                     }
                 }
@@ -237,15 +356,27 @@ namespace RubikCube
                     {
                         if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(Vector3.Down));
+                            }
                             cube.Rotate(Vector3.Down, false, AlgOrder);
                         }
                         else
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(Vector3.Down));
+                            }
                             cube.Rotate(Vector3.Down, true, AlgOrder);
                         }
                     }
                     else
                     {
+                        if (!waitForRotate)
+                        {
+                            AllTimeAlgOrder += (VectorAllAlgOrder(Vector3.Down));
+                        }
                         cube.Rotate(Vector3.Down, true, AlgOrder);
                     }
                 }
@@ -255,15 +386,27 @@ namespace RubikCube
                     {
                         if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealBackward));
+                            }
                             cube.Rotate(camera.RealBackward, false, AlgOrder);
                         }
                         else
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealBackward));
+                            }
                             cube.Rotate(camera.RealBackward, true, AlgOrder);
                         }
                     }
                     else
                     {
+                        if (!waitForRotate)
+                        {
+                            AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealBackward));
+                        }
                         cube.Rotate(camera.RealBackward, true, AlgOrder);
                     }
                 }
@@ -273,23 +416,34 @@ namespace RubikCube
                     {
                         if ((AlgOrder[1] == 'i') || (AlgOrder[1] == 'I') || (AlgOrder[1] == '\''))
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealForward));
+                            }
                             cube.Rotate(camera.RealForward, false, AlgOrder);
                         }
                         else
                         {
+                            if (!waitForRotate)
+                            {
+                                AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealForward));
+                            }
                             cube.Rotate(camera.RealForward, true, AlgOrder);
                         }
                     }
                     else
                     {
+                        if (!waitForRotate)
+                        {
+                            AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealForward));
+                        }
                         cube.Rotate(camera.RealForward, true, AlgOrder);
                     }
                 }
-
                 else
                 {
-                    AlgOrder = AlgOrder.Substring(1);
                     Debug.WriteLine("AlgOrder unknown = " + AlgOrder);
+                    AlgOrder = AlgOrder.Substring(1);
                 }
             }
         }
@@ -426,6 +580,125 @@ namespace RubikCube
         public void UpdateAlgo(string algo)
         {
             AlgOrder = algo;
+        }
+        public void ControlZ()
+        {
+            if (AllTimeAlgOrder.Length > 0)
+            {
+                int num = 0;
+                int length = AllTimeAlgOrder.Length - 1;
+                bool counterClockWise = false;
+                if ((AllTimeAlgOrder[length - num] == 'I') || (AllTimeAlgOrder[length - num] == 'i'))
+                {
+                    num += 1;
+                    counterClockWise = true;
+                }
+
+                if (AllTimeAlgOrder[length - num] == 'l')
+                {
+                    cube.Rotate(Vector3.Left, counterClockWise, AlgOrder);
+                }
+                else if (AllTimeAlgOrder[length - num] == 'r')
+                {
+                    cube.Rotate(Vector3.Right, counterClockWise, AlgOrder);
+                }
+                else if (AllTimeAlgOrder[length - num] == 'u')
+                {
+                    cube.Rotate(Vector3.Up, counterClockWise, AlgOrder);
+                }
+                else if (AllTimeAlgOrder[length - num] == 'd')
+                {
+                    cube.Rotate(Vector3.Down, counterClockWise, AlgOrder);
+                }
+                else if (AllTimeAlgOrder[length - num] == 'f')
+                {
+                    cube.Rotate(Vector3.Forward, counterClockWise, AlgOrder);
+                }
+                else if (AllTimeAlgOrder[length - num] == 'b')
+                {
+                    cube.Rotate(Vector3.Backward, counterClockWise, AlgOrder);
+                }
+            }
+            else
+            {
+                Debug.WriteLine("AllTimeAlgOrder is 0!!!");
+            }
+        }
+        public void ControlY()
+        {
+            if (YAlgOrder.Length > 0)
+            {
+                int num = 0;
+                int length = YAlgOrder.Length - 1;
+                bool counterClockWise = true;
+                if (YAlgOrder.Length > 1)
+                {
+                    if ((YAlgOrder[1] == 'I') || (YAlgOrder[1] == 'i'))
+                    {
+                        num += 1;
+                        counterClockWise = false;
+                    }
+                }
+                if (YAlgOrder[0 + num] == 'l')
+                {
+                    cube.Rotate(Vector3.Left, counterClockWise, AlgOrder);
+                }
+                else if (YAlgOrder[0 + num] == 'r')
+                {
+                    cube.Rotate(Vector3.Right, counterClockWise, AlgOrder);
+                }
+                else if (YAlgOrder[0 + num] == 'u')
+                {
+                    cube.Rotate(Vector3.Up, counterClockWise, AlgOrder);
+                }
+                else if (YAlgOrder[0 + num] == 'd')
+                {
+                    cube.Rotate(Vector3.Down, counterClockWise, AlgOrder);
+                }
+                else if (YAlgOrder[0 + num] == 'f')
+                {
+                    cube.Rotate(Vector3.Forward, counterClockWise, AlgOrder);
+                }
+                else if (YAlgOrder[0 + num] == 'b')
+                {
+                    cube.Rotate(Vector3.Backward, counterClockWise, AlgOrder);
+                }
+            }
+            else
+            {
+                Debug.WriteLine("YAlgOrder is 0!!!");
+            }
+        }
+        public string VectorAllAlgOrder(Vector3 real)
+        {
+            waitForRotate = true;
+            Debug.WriteLine("waitForRotate2 is " + waitForRotate);
+            if (real == Vector3.Left)
+            {
+                return "l";
+            }
+            if (real == Vector3.Right)
+            {
+                return "r";
+            }
+            if (real == Vector3.Backward)
+            {
+                return "b";
+            }
+            if (real == Vector3.Forward)
+            {
+                return "f";
+            }
+            if(real == Vector3.Up)
+            {
+                return "u";
+            }
+            if(real == Vector3.Down)
+            {
+                return "d";
+            }
+            return "";
+
         }
         #endregion
 
