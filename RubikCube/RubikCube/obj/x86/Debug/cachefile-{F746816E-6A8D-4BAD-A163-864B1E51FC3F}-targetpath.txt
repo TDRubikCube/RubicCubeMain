@@ -1,0 +1,14 @@
+Content\font.xnb
+Content\rubik.xnb
+Content\pics\english.xnb
+Content\pics\FreePlay.xnb
+Content\pics\hebrew.xnb
+Content\pics\Mute.xnb
+Content\pics\Options.xnb
+Content\pics\scramble.xnb
+Content\pics\solved.xnb
+Content\pics\square.xnb
+Content\pics\Tutorial.xnb
+Content\pics\unMute.xnb
+Content\music\bg-music.xnb
+Content\music\bg-music.wma

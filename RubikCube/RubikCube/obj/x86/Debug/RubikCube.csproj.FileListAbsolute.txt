@@ -1,0 +1,44 @@
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\obj\x86\Debug\RubikCube.firstPopup.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\obj\x86\Debug\RubikCube.csproj.GenerateResource.Cache
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\obj\x86\Debug\RubikCube.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\font.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\rubik.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\pics\english.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\pics\FreePlay.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\pics\hebrew.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\pics\Mute.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\pics\Options.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\pics\scramble.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\pics\solved.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\pics\square.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\pics\Tutorial.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\pics\unMute.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\music\bg-music.xnb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\Content\music\bg-music.wma
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\RubikCube.exe
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\bin\x86\Debug\RubikCube.pdb
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\obj\x86\Debug\RubikCube.exe
+C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCube\obj\x86\Debug\RubikCube.pdb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\font.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\rubik.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\pics\english.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\pics\FreePlay.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\pics\hebrew.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\pics\Mute.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\pics\Options.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\pics\scramble.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\pics\solved.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\pics\square.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\pics\Tutorial.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\pics\unMute.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\music\bg-music.xnb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\Content\music\bg-music.wma
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\RubikCube.exe
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\bin\x86\Debug\RubikCube.pdb
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\obj\x86\Debug\RubikCube.csprojResolveAssemblyReference.cache
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\obj\x86\Debug\RubikCube.firstPopup.resources
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\obj\x86\Debug\RubikCube.csproj.GenerateResource.Cache
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\obj\x86\Debug\RubikCube.exe
+C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCube\obj\x86\Debug\RubikCube.pdb
