@@ -92,7 +92,7 @@ namespace RubikCube
         /// <param name="cameraPos"></param>
         private void RotateWhichSide(KeyboardState keyboardState, KeyboardState oldKeyboardState, Vector3 cameraPos)
         {
-            
+            camera.RealRotate(cameraPos);            
             if (cube.Angle <= -100)
             {
                 if ((AlgOrder[0] == 'Z') || (AlgOrder[0] == 'z'))
@@ -145,7 +145,6 @@ namespace RubikCube
                     
                     AlgOrder = "";
                 }
-                camera.RealRotate(cameraPos);
                 rotationsLeft = AlgOrder.Length;
                 if (AlgOrder.Split('i').Length != -1)
                 {
@@ -284,11 +283,13 @@ namespace RubikCube
                         }
                     }
                     else
+                    {
                         if (!waitForRotate)
                         {
                             AllTimeAlgOrder += (VectorAllAlgOrder(camera.RealLeft));
                         }
                         cube.Rotate(camera.RealLeft, true, AlgOrder);
+                    }
                 }
                 else if ((AlgOrder[0] == 'R') || (AlgOrder[0] == 'r'))
                 {
@@ -639,27 +640,27 @@ namespace RubikCube
                         counterClockWise = false;
                     }
                 }
-                if (YAlgOrder[0 + num] == 'l')
+                if (YAlgOrder[num] == 'l')
                 {
                     cube.Rotate(Vector3.Left, counterClockWise, AlgOrder);
                 }
-                else if (YAlgOrder[0 + num] == 'r')
+                else if (YAlgOrder[num] == 'r')
                 {
                     cube.Rotate(Vector3.Right, counterClockWise, AlgOrder);
                 }
-                else if (YAlgOrder[0 + num] == 'u')
+                else if (YAlgOrder[num] == 'u')
                 {
                     cube.Rotate(Vector3.Up, counterClockWise, AlgOrder);
                 }
-                else if (YAlgOrder[0 + num] == 'd')
+                else if (YAlgOrder[num] == 'd')
                 {
                     cube.Rotate(Vector3.Down, counterClockWise, AlgOrder);
                 }
-                else if (YAlgOrder[0 + num] == 'f')
+                else if (YAlgOrder[num] == 'f')
                 {
                     cube.Rotate(Vector3.Forward, counterClockWise, AlgOrder);
                 }
-                else if (YAlgOrder[0 + num] == 'b')
+                else if (YAlgOrder[num] == 'b')
                 {
                     cube.Rotate(Vector3.Backward, counterClockWise, AlgOrder);
                 }
@@ -697,6 +698,7 @@ namespace RubikCube
             {
                 return "d";
             }
+            Debug.WriteLine("returned null");
             return "";
 
         }

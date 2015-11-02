@@ -99,7 +99,7 @@ namespace RubikCube
                 howManyTurns++;
                 foreach (int i in cubeState.FindCubiesOnSide(side, isClockWise))
                 {
-                    Debug.WriteLine(i);
+                    //Debug.WriteLine(i);
                     if (isClockWise)
                     {
                         RotateSide(i, MathHelper.PiOver2 / 10f, 1.5f * sidePosition, -1.5f * sidePosition, 0, 'x');
