@@ -1,3 +1,4 @@
 C:\Users\User\Documents\Visual Studio 2013\Projects\RubikCube\RubikCube\RubikCubeContent\obj\x86\Debug\RubikCubeContent.contentprojResolveAssemblyReference.cache
 C:\Users\user1\Desktop\tamir_version_of_rubik\RubikCube\RubikCubeContent\obj\x86\Debug\RubikCubeContent.contentprojResolveAssemblyReference.cache
 F:\GitHub\RubicCubeMain\RubikCube\RubikCubeContent\obj\x86\Debug\RubikCubeContent.contentprojResolveAssemblyReference.cache
+C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCubeContent\obj\x86\Debug\RubikCubeContent.contentprojResolveAssemblyReference.cache

@@ -214,14 +214,14 @@ namespace RubikCube
                 if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
                     AlgOrder += "I";
             }
-            if ((keyboardState.IsKeyDown(Keys.LeftControl) || oldKeyboardState.IsKeyUp(Keys.RightControl)) && keyboardState.IsKeyUp(Keys.Z) && oldKeyboardState.IsKeyDown(Keys.Z))
+            if ((keyboardState.IsKeyDown(Keys.LeftControl) || keyboardState.IsKeyDown(Keys.RightControl)) && keyboardState.IsKeyUp(Keys.Z) && oldKeyboardState.IsKeyDown(Keys.Z))
             {
                 if (AllTimeAlgOrder.Length > 0)
                 {
                     AlgOrder += "Z";
                 }
             }
-            if ((keyboardState.IsKeyDown(Keys.LeftControl) || oldKeyboardState.IsKeyUp(Keys.RightControl)) && keyboardState.IsKeyUp(Keys.Y) && oldKeyboardState.IsKeyDown(Keys.Y))
+            if ((keyboardState.IsKeyDown(Keys.LeftControl) || keyboardState.IsKeyDown(Keys.RightControl)) && keyboardState.IsKeyUp(Keys.Y) && oldKeyboardState.IsKeyDown(Keys.Y))
             {
                 if (YAlgOrder.Length > 0)
                 {
