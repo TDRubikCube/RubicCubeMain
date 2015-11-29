@@ -98,6 +98,8 @@ namespace RubikCube
             //loading logic
             if (!loadingThread.IsAlive)
             {
+                if(justFinshed)
+                    Debug.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 //load bools from save file
                 foreach (Tuple<string, string> b in save.LoadBools())
                 {

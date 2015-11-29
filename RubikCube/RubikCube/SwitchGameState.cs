@@ -91,17 +91,18 @@ namespace RubikCube
         /// <param name="cameraPos"></param>
         private void RotateWhichSide(KeyboardState keyboardState, KeyboardState oldKeyboardState, Vector3 cameraPos)
         {
-            camera.RealRotate(cameraPos);  
+            camera.RealRotate(cameraPos);
             if (cube.Angle <= -100)
             {
                 if ((AlgOrder[0] == 'Z') || (AlgOrder[0] == 'z'))
                 {
-                    if ((AllTimeAlgOrder[AllTimeAlgOrder.Length - 1] == 'I') || (AllTimeAlgOrder[AllTimeAlgOrder.Length - 1] == 'i'))
+                    char lastCommnad = AllTimeAlgOrder[AllTimeAlgOrder.Length - 1];
+                    if ((lastCommnad == 'I') || (lastCommnad == 'i'))
                     {
-                        YAlgOrder = AllTimeAlgOrder[AllTimeAlgOrder.Length - 1] + YAlgOrder;
+                        YAlgOrder = lastCommnad + YAlgOrder;
                         AllTimeAlgOrder = AllTimeAlgOrder.Substring(0, AllTimeAlgOrder.Length - 1);
                     }
-                    YAlgOrder = AllTimeAlgOrder[AllTimeAlgOrder.Length - 1] + YAlgOrder;
+                    YAlgOrder = lastCommnad + YAlgOrder;
                     AllTimeAlgOrder = AllTimeAlgOrder.Substring(0, AllTimeAlgOrder.Length - 1);
                 }
                 if ((AlgOrder[0] == 'Y') || (AlgOrder[0] == 'y'))
@@ -132,14 +133,14 @@ namespace RubikCube
                     else
                     {
                         AlgOrder = AlgOrder.Substring(1);
-                        
+
                     }
                     Debug.WriteLine("After Change" + AlgOrder);
-                    
+
                 }
                 else
                 {
-                    
+
                     AlgOrder = "";
                 }
                 rotationsLeft = AlgOrder.Length;
@@ -168,59 +169,21 @@ namespace RubikCube
             {
                 Debug.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             }
-            if (keyboardState.IsKeyDown(Keys.L) && oldKeyboardState.IsKeyUp(Keys.L))
+            if (keyboardState.IsKeyDown(Keys.T) && oldKeyboardState.IsKeyUp(Keys.T))//T is 4 tests!
             {
-                AlgOrder += (VectorToChar(camera.RealLeft));
-                if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
+                Debug.WriteLine("T was pressed, stating rotating R 30 times for tests");
+                for (int i = 0; i < 30; i++)
                 {
-                    AlgOrder += "I";
+                    AlgOrder += (VectorToChar(camera.RealRight));
+                    AllTimeAlgOrder += (VectorToChar(camera.RealRight));
                 }
             }
-                if (keyboardState.IsKeyDown(Keys.T) && oldKeyboardState.IsKeyUp(Keys.T))//T is 4 tests!
-            {
-                  Debug.WriteLine("T was pressed, stating rotating R 30 times for tests");
-                  for (int i = 0; i < 30; i++)
-                  {
-                      AlgOrder += (VectorToChar(camera.RealRight));
-                      AllTimeAlgOrder += (VectorToChar(camera.RealRight));
-                  }
-            } 
-
-            if (keyboardState.IsKeyDown(Keys.R) && oldKeyboardState.IsKeyUp(Keys.R))
-            {
-                AlgOrder += (VectorToChar(camera.RealRight));
-                AllTimeAlgOrder += (VectorToChar(camera.RealRight));
-                if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    AlgOrder += "I";
-            }
-            if (keyboardState.IsKeyDown(Keys.U) && oldKeyboardState.IsKeyUp(Keys.U))
-            {
-                AlgOrder += (VectorToChar(Vector3.Up));
-                AllTimeAlgOrder += (VectorToChar(Vector3.Up));
-                if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    AlgOrder += "I";
-            }
-            if (keyboardState.IsKeyDown(Keys.D) && oldKeyboardState.IsKeyUp(Keys.D))
-            {
-                AlgOrder += (VectorToChar(Vector3.Down));
-                AllTimeAlgOrder += (VectorToChar(Vector3.Down));
-                if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    AlgOrder += "I";
-            }
-            if (keyboardState.IsKeyDown(Keys.B) && oldKeyboardState.IsKeyUp(Keys.B))
-            {
-                AlgOrder += (VectorToChar(camera.RealBackward));
-                AllTimeAlgOrder += (VectorToChar(camera.RealBackward));
-                if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    AlgOrder += "I";
-            }
-            if (keyboardState.IsKeyDown(Keys.F) && oldKeyboardState.IsKeyUp(Keys.F))
-            {
-                AlgOrder += (VectorToChar(camera.RealForward));
-                AllTimeAlgOrder += (VectorToChar(camera.RealForward));
-                if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
-                    AlgOrder += "I";
-            }
+            CheckForClick(ref keyboardState, ref oldKeyboardState, Keys.R, camera.RealRight);
+            CheckForClick(ref keyboardState, ref oldKeyboardState, Keys.L, camera.RealLeft);
+            CheckForClick(ref keyboardState, ref oldKeyboardState, Keys.U, Vector3.Up);
+            CheckForClick(ref keyboardState, ref oldKeyboardState, Keys.D, Vector3.Down);
+            CheckForClick(ref keyboardState, ref oldKeyboardState, Keys.F, camera.RealForward);
+            CheckForClick(ref keyboardState, ref oldKeyboardState, Keys.B, camera.RealBackward);
             if ((keyboardState.IsKeyDown(Keys.LeftControl) || keyboardState.IsKeyDown(Keys.RightControl)) && keyboardState.IsKeyUp(Keys.Z) && oldKeyboardState.IsKeyDown(Keys.Z))
             {
                 if (AllTimeAlgOrder.Length > 0)
@@ -230,23 +193,16 @@ namespace RubikCube
             }
             if ((keyboardState.IsKeyDown(Keys.LeftControl) || keyboardState.IsKeyDown(Keys.RightControl)) && keyboardState.IsKeyUp(Keys.Y) && oldKeyboardState.IsKeyDown(Keys.Y))
             {
-                if ((AllTimeAlgOrder[(AllTimeAlgOrder.Length - 1)] == 'Z') || (AllTimeAlgOrder[(AllTimeAlgOrder.Length - 1)] == 'z') || (AllTimeAlgOrder[(AllTimeAlgOrder.Length - 1)] == 'Y') || (AllTimeAlgOrder[(AllTimeAlgOrder.Length - 1)] == 'y'))
-                {
-                    if (YAlgOrder.Length > 0)
-                    {
-                        AlgOrder += "Y";
-                    }
-                }
-                else
-                    YAlgOrder = "";
+                if (YAlgOrder.Length > 0)
+                    AlgOrder += "y";
             }
-            
+
             UpdateAlgo(AlgOrder);
 
             //here the fun starts
             //Debug.WriteLine("algOrder=    "+algOrder);
 
-            if(true) //Because we're getting rid of this fucking function ayyy
+            if (true) //Because we're getting rid of this fucking function ayyy
             {
                 if (AlgOrder.Length > 0)
                 {
@@ -391,6 +347,18 @@ namespace RubikCube
             }
         }
 
+        private void CheckForClick(ref KeyboardState keyboardState, ref KeyboardState oldKeyboardState, Keys key, Vector3 direction)
+        {
+            if (keyboardState.IsKeyDown(key) && oldKeyboardState.IsKeyUp(key))
+            {
+                AlgOrder += (VectorToChar(direction));
+                AllTimeAlgOrder += (VectorToChar(direction));
+                if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
+                    AlgOrder += "I";
+                YAlgOrder = "";
+            }
+        }
+
         /// <summary>
         /// sets the oldState vars
         /// </summary>
@@ -451,6 +419,7 @@ namespace RubikCube
                     if (button.BtnScramble.IsClicked) shouldRotate = true;
                     if (button.BtnSolve.IsClicked)
                     {
+                        cube.Angle = 0;
                         cube.Solve();
                         shouldRotate = false;
                         AlgOrder = "";
@@ -634,11 +603,11 @@ namespace RubikCube
             {
                 return "f";
             }
-            if(real == Vector3.Up)
+            if (real == Vector3.Up)
             {
                 return "u";
             }
-            if(real == Vector3.Down)
+            if (real == Vector3.Down)
             {
                 return "d";
             }
@@ -648,11 +617,11 @@ namespace RubikCube
         }
         public Vector3 CharToVector(string real)
         {
-            if ((real == "l")||(real == "L"))
+            if ((real == "l") || (real == "L"))
             {
                 return Vector3.Left;
             }
-            if ((real == "r")||(real == "R"))
+            if ((real == "r") || (real == "R"))
             {
                 return Vector3.Right;
             }
@@ -660,7 +629,7 @@ namespace RubikCube
             {
                 return Vector3.Backward;
             }
-            if ((real == "f") || (real == "L"))
+            if ((real == "f") || (real == "F"))
             {
                 return Vector3.Forward;
             }
