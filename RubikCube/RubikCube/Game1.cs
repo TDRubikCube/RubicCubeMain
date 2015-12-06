@@ -32,6 +32,7 @@ namespace RubikCube
         Thread loadingThread;
         ButtonSetUp button;
         SwitchGameState gameState;
+        public bool isDoneLoading = false;
         private SaveGame save;
         #endregion
 
@@ -98,8 +99,11 @@ namespace RubikCube
             //loading logic
             if (!loadingThread.IsAlive)
             {
-                if(justFinshed)
+                if ((justFinshed)&&(!isDoneLoading))
+                {
+                    isDoneLoading = true;
                     Debug.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                }
                 //load bools from save file
                 foreach (Tuple<string, string> b in save.LoadBools())
                 {

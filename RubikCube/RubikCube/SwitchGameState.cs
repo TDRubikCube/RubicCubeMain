@@ -167,16 +167,44 @@ namespace RubikCube
             /////////////
             if (keyboardState.IsKeyDown(Keys.Q) && oldKeyboardState.IsKeyUp(Keys.Q))
             {
-                Debug.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                DebugBorders("");
             }
             if (keyboardState.IsKeyDown(Keys.T) && oldKeyboardState.IsKeyUp(Keys.T))//T is 4 tests!
             {
-                Debug.WriteLine("T was pressed, stating rotating R 30 times for tests");
-                for (int i = 0; i < 30; i++)
+
+                if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
                 {
-                    AlgOrder += (VectorToChar(camera.RealRight));
-                    AllTimeAlgOrder += (VectorToChar(camera.RealRight));
+                    DebugBorders("");
+                    Debug.WriteLine("T was pressed, stating rotating R 30 times counter-clockWise for tests");
+                    DebugBorders("");
+                    for (int i = 0; i < 15; i++)
+                    {
+                        AlgOrder += (VectorToChar(camera.RealRight));
+                        AlgOrder += ("I");
+                        AllTimeAlgOrder += (VectorToChar(camera.RealRight));
+                        AllTimeAlgOrder +=("I");
+                    }
                 }
+                else
+                {
+                    DebugBorders("");
+                    Debug.WriteLine("T was pressed, stating rotating R 30 times clockWise for tests");
+                    DebugBorders("");
+                    for (int i = 0; i < 15; i++)
+                    {
+                        AlgOrder += (VectorToChar(camera.RealRight));
+                        AllTimeAlgOrder += (VectorToChar(camera.RealRight));
+                    }
+                }
+            }
+            if (keyboardState.IsKeyDown(Keys.W) && oldKeyboardState.IsKeyUp(Keys.W))
+            {
+                DebugBorders("w");
+                Debug.WriteLine("AlgOrder is: " + AlgOrder);
+                Debug.WriteLine("AllTimeAlgOrder is: " + AllTimeAlgOrder);
+                Debug.WriteLine("YAlgOrder is: " + YAlgOrder);
+                Debug.WriteLine("Angle is: " + cube.Angle);
+                DebugBorders("w");
             }
             CheckForClick(ref keyboardState, ref oldKeyboardState, Keys.R, camera.RealRight);
             CheckForClick(ref keyboardState, ref oldKeyboardState, Keys.L, camera.RealLeft);
@@ -420,12 +448,12 @@ namespace RubikCube
                     if (button.BtnSolve.IsClicked)
                     {
                         cube.Angle = 0;
-                        cube.Solve();
                         shouldRotate = false;
                         AlgOrder = "";
                         AllTimeAlgOrder = "";
                         YAlgOrder = "";
-                        Debug.WriteLine("~~~~~~~~~~~Reset!~~~~~~~~~~~");
+                        cube.Solve();
+                        DebugBorders("Reset!");
                     }
                     cube.Update(gameTime, shouldRotate, cube.ScramblingVectors, false);
                     if (cube.ScrambleIndex >= 25)
@@ -643,6 +671,31 @@ namespace RubikCube
             }
             Debug.WriteLine("CharToVector returned null");
             return Vector3.Zero;
+        }
+        public void DebugBorders(string a)
+        {
+            string b = "~~~~~~~~~~~~~~";
+            if (a.Length < (b.Length * 2))
+            {
+                for (int i = 0; i < (a.Length) / 2; i++)
+                {
+                    b = b.Substring(1);
+                }
+                if ((a.Length % 2) == 1)
+                {
+                    b = b.Substring(1) + a + b;
+                }
+                else
+                {
+                    b += a + b;
+                }
+                Debug.WriteLine(b);
+              //Debug.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            }
+            else
+            {
+                Debug.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            }
         }
         #endregion
 

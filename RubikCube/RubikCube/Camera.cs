@@ -51,6 +51,9 @@ namespace RubikCube
         /// <param name="cameraPos">the camera position as a vector3</param>
         public void RealRotate(Vector3 cameraPos)
         {
+          //  Debug.WriteLine("cameraPos.X is: "+cameraPos.X);
+           // Debug.WriteLine("cameraPos.Y is: " + cameraPos.Y);
+         //   Debug.WriteLine("cameraPos.Z is: " + cameraPos.Z);
             if (cameraPos.X >= -radius / 1.61f && cameraPos.X <= radius / 1.61f && cameraPos.Z > radius / 1.438f && cameraPos.Z <= radius * 1.012f)
             {
                 RealLeft = Vector3.Left;
