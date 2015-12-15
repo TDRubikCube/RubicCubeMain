@@ -102,7 +102,7 @@ namespace RubikCube
                 if ((justFinshed)&&(!isDoneLoading))
                 {
                     isDoneLoading = true;
-                    Debug.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    Debug.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~"); //should upgrade to DebbugBorders (~~~) but too afraid to StuckOverflow the game.
                 }
                 //load bools from save file
                 foreach (Tuple<string, string> b in save.LoadBools())

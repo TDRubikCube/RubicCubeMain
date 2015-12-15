@@ -8,7 +8,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>2015-12-06T15:41:54.8990282+02:00</Time>
+      <Time>2015-12-15T14:59:07.8773747+02:00</Time>
     </Item>
     <Item>
       <Source>rubik.fbx</Source>
@@ -17,10 +17,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\rubik.xnb</Output>
-      <Time>2015-12-06T15:41:54.9830282+02:00</Time>
+      <Time>2015-12-15T14:59:08.0081587+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\rubik_0.xml</Key>
-        <Value>2015-12-06T15:42:49.1410282+02:00</Value>
+        <Value>2015-12-15T15:00:19.5450547+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -30,7 +30,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\english.xnb</Output>
-      <Time>2015-12-06T15:41:54.9750282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9954707+02:00</Time>
     </Item>
     <Item>
       <Source>pics\FreePlay.jpg</Source>
@@ -39,7 +39,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\FreePlay.xnb</Output>
-      <Time>2015-12-06T15:41:54.9730282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9905907+02:00</Time>
     </Item>
     <Item>
       <Source>pics\hebrew.png</Source>
@@ -48,7 +48,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\hebrew.xnb</Output>
-      <Time>2015-12-06T15:41:54.9750282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9964467+02:00</Time>
     </Item>
     <Item>
       <Source>pics\Mute.jpg</Source>
@@ -57,7 +57,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\Mute.xnb</Output>
-      <Time>2015-12-06T15:41:54.9740282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9935187+02:00</Time>
     </Item>
     <Item>
       <Source>pics\Options.jpg</Source>
@@ -66,7 +66,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\Options.xnb</Output>
-      <Time>2015-12-06T15:41:54.9740282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9944947+02:00</Time>
     </Item>
     <Item>
       <Source>pics\scramble.jpg</Source>
@@ -75,7 +75,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\scramble.xnb</Output>
-      <Time>2015-12-06T15:41:54.9760282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9964467+02:00</Time>
     </Item>
     <Item>
       <Source>pics\solved.jpg</Source>
@@ -84,7 +84,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\solved.xnb</Output>
-      <Time>2015-12-06T15:41:54.9760282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9974227+02:00</Time>
     </Item>
     <Item>
       <Source>pics\square.png</Source>
@@ -93,7 +93,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\square.xnb</Output>
-      <Time>2015-12-06T15:41:54.9770282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9974227+02:00</Time>
     </Item>
     <Item>
       <Source>pics\Tutorial.jpg</Source>
@@ -102,7 +102,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\Tutorial.xnb</Output>
-      <Time>2015-12-06T15:41:54.9750282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9944947+02:00</Time>
     </Item>
     <Item>
       <Source>pics\unMute.jpg</Source>
@@ -111,7 +111,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\unMute.xnb</Output>
-      <Time>2015-12-06T15:41:54.9770282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9983987+02:00</Time>
     </Item>
     <Item>
       <Source>music\bg-music.mp3</Source>
@@ -121,14 +121,23 @@
       <Options>None</Options>
       <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\music\bg-music.xnb</Output>
       <Extra>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\music\bg-music.wma</Extra>
-      <Time>2015-12-06T15:41:54.9260282+02:00</Time>
+      <Time>2015-12-15T14:59:07.9144627+02:00</Time>
     </Item>
     <Item>
       <Source>rubik.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\rubik_0.xml</Output>
-      <Time>2015-12-06T15:41:54.9830282+02:00</Time>
+      <Time>2015-12-15T14:59:08.0081587+02:00</Time>
+    </Item>
+    <Item>
+      <Source>pics\russian.png</Source>
+      <Name>pics\russian</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\russian.xnb</Output>
+      <Time>2015-12-15T15:15:07.2063187+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -168,7 +177,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2013-12-05T10:13:05.9898108+02:00</Value>
+        <Value>2014-11-13T11:58:48.8857421+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

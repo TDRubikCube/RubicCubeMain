@@ -86,3 +86,4 @@ C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\obj\x86\Debug\RubikCube
 C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\obj\x86\Debug\RubikCube.csproj.GenerateResource.Cache
 C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\obj\x86\Debug\RubikCube.exe
 C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\obj\x86\Debug\RubikCube.pdb
+C:\Users\user1\Desktop\RubicCubeMain\RubikCube\RubikCube\bin\x86\Debug\Content\pics\russian.xnb

@@ -12,3 +12,4 @@ Content\pics\Tutorial.xnb
 Content\pics\unMute.xnb
 Content\music\bg-music.xnb
 Content\music\bg-music.wma
+Content\pics\russian.xnb

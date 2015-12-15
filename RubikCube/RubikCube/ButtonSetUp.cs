@@ -22,6 +22,7 @@ namespace RubikCube
         public Button BtnUnMute;
         public Button BtnEnglish;
         public Button BtnHebrew;
+        public Button BtnRussian;
         public Button BtnScramble;
         public Button BtnSolve;
         #endregion
@@ -38,6 +39,7 @@ namespace RubikCube
             Texture2D unMuteButton = content.Load<Texture2D>("pics/unMute");
             Texture2D englishButton = content.Load<Texture2D>("pics/english");
             Texture2D hebrewButton = content.Load<Texture2D>("pics/hebrew");
+            Texture2D russianButton = content.Load<Texture2D>("pics/russian");
             #endregion
 
             #region buttons initialize
@@ -73,7 +75,12 @@ namespace RubikCube
             BtnHebrew = new Button(hebrewButton, graphics.GraphicsDevice);
             BtnHebrew.SetPosition(new Vector2(graphicsDevice.Viewport.Width / 1.9f, graphicsDevice.Viewport.Height / 1.25f));
             BtnHebrew.Size = new Vector2(graphicsDevice.Viewport.Width / 10f, graphicsDevice.Viewport.Height / 10f);
-            
+
+            //russian button
+            BtnRussian = new Button(russianButton, graphics.GraphicsDevice);
+            BtnRussian.SetPosition(new Vector2(graphicsDevice.Viewport.Width / 1.55f, graphicsDevice.Viewport.Height / 1.25f));
+            BtnRussian.Size = new Vector2(graphicsDevice.Viewport.Width / 10f, graphicsDevice.Viewport.Height / 10f);
+
             //scramble button
             BtnScramble = new Button(scrambleButton, graphics.GraphicsDevice);
             BtnScramble.SetPosition(new Vector2(graphicsDevice.Viewport.Width / 20f, graphicsDevice.Viewport.Height / 1.25f));

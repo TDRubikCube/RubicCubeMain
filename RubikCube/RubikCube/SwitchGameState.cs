@@ -203,6 +203,9 @@ namespace RubikCube
                 Debug.WriteLine("AlgOrder is: " + AlgOrder);
                 Debug.WriteLine("AllTimeAlgOrder is: " + AllTimeAlgOrder);
                 Debug.WriteLine("YAlgOrder is: " + YAlgOrder);
+                Debug.WriteLine("cameraPos.X is: "+cameraPos.X);
+                Debug.WriteLine("cameraPos.Y is: " + cameraPos.Y);
+                Debug.WriteLine("cameraPos.Z is: " + cameraPos.Z);
                 Debug.WriteLine("Angle is: " + cube.Angle);
                 DebugBorders("w");
             }
@@ -243,6 +246,7 @@ namespace RubikCube
                         else
                         {
                             AlgOrder.Substring(1);
+                            Console.Beep();
                         }
                     }
                     else if ((AlgOrder[0] == 'Y') || (AlgOrder[0] == 'y')) //Check for control+Y
@@ -254,6 +258,8 @@ namespace RubikCube
                         else
                         {
                             AlgOrder.Substring(1);
+                            Console.Beep(1,100);
+                            Console.Beep(5, 100);
                         }
                     }
 
@@ -416,10 +422,11 @@ namespace RubikCube
                     button.BtnFreePlay.Update(false, gameTime);
                     break;
                 case GameState.Tutorial:
-                    if (keyboardState.IsKeyDown(Keys.Back)) CurrentGameState = GameState.MainMenu;
+                    if (keyboardState.IsKeyDown(Keys.Escape)) CurrentGameState = GameState.MainMenu;
                     break;
                 case GameState.Options:
                     if (keyboardState.IsKeyDown(Keys.Right) && oldKeyboardState.IsKeyUp(Keys.Right)) MediaPlayer.Stop();
+                    if (button.BtnRussian.IsClicked) lang.Russian();
                     if (button.BtnHebrew.IsClicked) lang.Hebrew();
                     if (button.BtnEnglish.IsClicked) lang.English();
                     //if (button.ClassicBound.Contains(mousePos) && mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released && whichGenre != "classic")
@@ -440,10 +447,11 @@ namespace RubikCube
                     //music.Update(mouseState, whichGenre, justSwitched);
                     button.BtnEnglish.Update(false, gameTime);
                     button.BtnHebrew.Update(false, gameTime);
-                    if (keyboardState.IsKeyDown(Keys.Back)) CurrentGameState = GameState.MainMenu;
+                    button.BtnRussian.Update(false, gameTime);
+                    if (keyboardState.IsKeyDown(Keys.Escape)) CurrentGameState = GameState.MainMenu;
                     break;
                 case GameState.FreePlay:
-                    if (keyboardState.IsKeyDown(Keys.Back)) CurrentGameState = GameState.MainMenu;
+                    if (keyboardState.IsKeyDown(Keys.Escape)) CurrentGameState = GameState.MainMenu;
                     if (button.BtnScramble.IsClicked) shouldRotate = true;
                     if (button.BtnSolve.IsClicked)
                     {
@@ -494,7 +502,7 @@ namespace RubikCube
                     spriteBatch.Begin();
                     spriteBatch.DrawString(font, lang.FreePlayTitle, new Vector2(graphicsDevice.Viewport.Width / 3f, 10), Color.Black);
                     spriteBatch.DrawString(font, lang.FreePlayScramble, new Vector2(graphicsDevice.Viewport.Width / 13f, graphicsDevice.Viewport.Height / 1.4f), Color.Black);
-                    spriteBatch.DrawString(font, lang.FreePlaySolve, new Vector2(graphicsDevice.Viewport.Width / 4f, graphicsDevice.Viewport.Height / 1.4f), Color.Black);
+                    spriteBatch.DrawString(font, lang.FreePlayReset, new Vector2(graphicsDevice.Viewport.Width / 4f, graphicsDevice.Viewport.Height / 1.4f), Color.Black);
                     button.BtnScramble.Draw(spriteBatch);
                     button.BtnSolve.Draw(spriteBatch);
                     spriteBatch.End();
@@ -502,6 +510,7 @@ namespace RubikCube
                     break;
                 case GameState.Options:
                     spriteBatch.Begin();
+                    button.BtnRussian.Draw(spriteBatch);
                     button.BtnHebrew.Draw(spriteBatch);
                     button.BtnEnglish.Draw(spriteBatch);
                     spriteBatch.DrawString(font, lang.OptionsTitle, new Vector2(graphicsDevice.Viewport.Width / 3f, 10), Color.Black);
@@ -509,6 +518,7 @@ namespace RubikCube
                     //spriteBatch.DrawString(text, "Choose Music Genre:         Rock       Classic", new Vector2(GraphicsDevice.Viewport.Width / 3f, GraphicsDevice.Viewport.Height / 3f), Color.Black);
                     spriteBatch.DrawString(font, "English", new Vector2(graphicsDevice.Viewport.Width / 2.5f, 440), Color.Black);
                     spriteBatch.DrawString(font, "ת י ר ב ע", new Vector2(graphicsDevice.Viewport.Width / 1.85f, 440), Color.Black);
+                    spriteBatch.DrawString(font, "Russian", new Vector2(graphicsDevice.Viewport.Width / 1.55f, 440), Color.Black);
                     spriteBatch.End();
                     break;
                 case GameState.Tutorial:

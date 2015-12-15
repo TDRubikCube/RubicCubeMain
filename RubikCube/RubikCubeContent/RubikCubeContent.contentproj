@@ -58,6 +58,11 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="pics\russian.png">
+      <Name>russian</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="pics\Mute.jpg">
       <Name>Mute</Name>
       <Importer>TextureImporter</Importer>
