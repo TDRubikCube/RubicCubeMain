@@ -451,7 +451,11 @@ namespace RubikCube
                     if (keyboardState.IsKeyDown(Keys.Escape)) CurrentGameState = GameState.MainMenu;
                     break;
                 case GameState.FreePlay:
-                    if (keyboardState.IsKeyDown(Keys.Escape)) CurrentGameState = GameState.MainMenu;
+                    if (keyboardState.IsKeyDown(Keys.Escape))
+                    {
+                        CurrentGameState = GameState.MainMenu;
+                        DebugBorders("MainMenu");
+                    }
                     if (button.BtnScramble.IsClicked) shouldRotate = true;
                     if (button.BtnSolve.IsClicked)
                     {
